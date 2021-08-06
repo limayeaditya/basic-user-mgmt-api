@@ -10,6 +10,14 @@ allUsers = [
     }
 ]
 
+const getUserData = (name)=>{
+    for(let i=0;i<allUsers.length;i++){
+        if(allUsers[i].name === name){
+            return allUsers[i]
+        }
+    }
+}
+
 
 const registerUser = (name,email,phone,password)=>{
     const id = allUsers.length + 1
@@ -27,13 +35,13 @@ const registerUser = (name,email,phone,password)=>{
 
 const loginUser = (email,password)=>{
     for(let i=0;i<allUsers.length;i++){
-        if(allUsers[i].email === email){
-            if(allUsers[i].password === password){
+        if(allUsers[i].email === email && allUsers[i].password === password){
+        {
                 console.log(allUsers[i]);
                 return allUsers[i]
-            }else{
-                return []
             }
+                
+        
 
         }else{
             return []
@@ -43,5 +51,6 @@ const loginUser = (email,password)=>{
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getUserData
 }

@@ -13,15 +13,26 @@ const loginUser = () => {
         const email = requestData.email        
         const password = requestData.password
         const user = userServices.loginUser(email,password)
-        const token = jwt.sign({
-            name: user.name,
-            email: email
-        },secretKey)
-
-        response.status(200).json({
-            success: true,
-            token
-        })
+        
+        if (user.length >1){
+            const token = jwt.sign({
+                name: user.name,
+                email: email
+            },secretKey)
+            response.status(200).json({
+                success: true,
+                token,
+                message: user
+            })
+        }else{
+            response.status(401).json({
+                success:false,
+                message:"Invalid credentials"
+            })
+        }
+        
+        
+       
     }
 }
 

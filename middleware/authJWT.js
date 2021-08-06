@@ -5,7 +5,7 @@ const app = express()
 const secretKey = process.env.secretKey
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-
+const userService = require('../services/user')
 
 const verifyJWT = (request,response,next)=>{
     const token = request.headers['authorization']
@@ -15,10 +15,23 @@ const verifyJWT = (request,response,next)=>{
             message: 'A token is missing'
         })
     }
-    const jwtToken = token.split(' ')[1]
-    const decodeUserInfo = jwt.verify(jwtToken,secretKey)
-    console.log(decodeUserInfo);
+    try {
+        const jwtToken = token.split(' ')[1]
+        const decodeUserInfo = jwt.verify(jwtToken,secretKey)
+        if(!userService.getUserData(decodeUserInfo.name)){
+            response.status(400).json({
+                success: false,
+                message: 'Invalid Credentials'
+            })
+        }
+    } catch (error) {
+        response.status(401).json({
+            success: false,
+            message:"Invalid token"
+        })
+    }
     next()
+
 }
 
 module.exports = {
