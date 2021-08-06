@@ -8,6 +8,7 @@ allUsers = [
         phone:"9887897889",
         password:"123456"
     }
+    
 ]
 
 const getUserData = (name)=>{
@@ -15,6 +16,16 @@ const getUserData = (name)=>{
         if(allUsers[i].name === name){
             return allUsers[i]
         }
+    }
+}
+const updateUserData = (emailInToken,name,email,phone)=>{
+    for(let i=0;i<allUsers.length;i++){
+        if(allUsers[i].email === emailInToken){
+            allUsers[i].name = name
+            allUsers[i].email = email
+            allUsers[i].phone = phone
+        }
+        return allUsers[i]
     }
 }
 
@@ -29,7 +40,6 @@ const registerUser = (name,email,phone,password)=>{
         password:password
     }
     allUsers.push(user)
-    console.log(allUsers);
     return id
 }
 
@@ -49,5 +59,6 @@ const loginUser = (email,password)=>{
 module.exports = {
     registerUser,
     loginUser,
-    getUserData
+    getUserData,
+    updateUserData
 }
