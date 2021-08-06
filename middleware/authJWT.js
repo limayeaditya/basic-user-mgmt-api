@@ -19,13 +19,13 @@ const verifyJWT = (request,response,next)=>{
         const jwtToken = token.split(' ')[1]
         const decodeUserInfo = jwt.verify(jwtToken,secretKey)
         if(!userService.getUserData(decodeUserInfo.name)){
-            response.status(400).json({
+            response.status(401).json({
                 success: false,
                 message: 'Invalid Credentials'
             })
         }
     } catch (error) {
-        response.status(401).json({
+        response.status(400).json({
             success: false,
             message:"Invalid token"
         })

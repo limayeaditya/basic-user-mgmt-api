@@ -40,9 +40,6 @@ const loginUser = (email,password)=>{
                 console.log(allUsers[i]);
                 return allUsers[i]
             }
-                
-        
-
         }else{
             return []
         }
