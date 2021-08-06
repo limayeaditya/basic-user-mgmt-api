@@ -10,5 +10,7 @@ module.exports = () =>  {
     routes.get('/users',authJWT.verifyJWT,require('./getOtherUsers').getUserDataByName())
     routes.post('/profile',authJWT.verifyJWT,require('./profile').getProfile)
     routes.post('/updateprofile',authJWT.verifyJWT,require('./updateProfile').updateProfile)
+    routes.post('/changepassword',authJWT.verifyJWT,require('./changePassword').changePassword)
+
     return routes
 }

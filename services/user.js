@@ -25,7 +25,7 @@ const updateUserData = (emailInToken,name,email,phone)=>{
             allUsers[i].email = email
             allUsers[i].phone = phone
         }
-        console.log(allUsers[i]);
+        
         
         return allUsers[i]
     }
@@ -58,9 +58,19 @@ const loginUser = (email,password)=>{
     }
 }
 
+const updatePassword = (email,password)=>{
+    for(let i=0;i<allUsers.length;i++){
+        if(allUsers[i].email === email){
+            allUsers[i].password = password
+        }
+    }
+    
+}
+
 module.exports = {
     registerUser,
     loginUser,
     getUserData,
-    updateUserData
+    updateUserData,
+    updatePassword
 }

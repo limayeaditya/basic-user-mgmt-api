@@ -18,7 +18,7 @@ const verifyJWT = (request,response,next)=>{
     try {
         const jwtToken = token.split(' ')[1]
         const decodeUserInfo = jwt.verify(jwtToken,secretKey)
-        console.log(decodeUserInfo);
+        
         if(!userService.getUserData(decodeUserInfo.name)){
             response.status(401).json({
                 success: false,
