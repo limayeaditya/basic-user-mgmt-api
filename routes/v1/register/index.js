@@ -14,7 +14,7 @@ const registerUser = () => {
         const email = requestData.email
         const phone = requestData.phone
         const password = requestData.password
-        const id = userServices.registerUser(name,email,phone,password)
+        userServices.registerUser(name,email,phone,password)
 
         const token = jwt.sign({
             name: name,

@@ -17,9 +17,13 @@ const updateProfile = (request,response)=>{
     const phone = request.body.phone
 
     newUserProfile = userServices.updateUserData(emailInToken,name,email,phone)
+    const newToken = jwt.sign({
+        name: name,
+        email: email
+    },secretKey)
     response.status(200).json({
         success: true,
-    
+        newToken
     })
 
 }

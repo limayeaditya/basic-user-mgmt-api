@@ -1,6 +1,6 @@
 
 
-allUsers = [
+let allUsers = [
     {
         id: 0,
         name:"Try1",
@@ -25,6 +25,8 @@ const updateUserData = (emailInToken,name,email,phone)=>{
             allUsers[i].email = email
             allUsers[i].phone = phone
         }
+        console.log(allUsers[i]);
+        
         return allUsers[i]
     }
 }
@@ -40,7 +42,7 @@ const registerUser = (name,email,phone,password)=>{
         password:password
     }
     allUsers.push(user)
-    return id
+    
 }
 
 const loginUser = (email,password)=>{

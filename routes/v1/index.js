@@ -7,7 +7,7 @@ const authJWT = require('../../middleware/authJWT')
 module.exports = () =>  {
     routes.post('/register',require('./register').registerUser())
     routes.post('/login',authJWT.verifyJWT,require('./login').loginUser())
-    routes.get('/user',authJWT.verifyJWT,require('./getOtherUsers').getUserDataByName())
+    routes.get('/users',authJWT.verifyJWT,require('./getOtherUsers').getUserDataByName())
     routes.post('/profile',authJWT.verifyJWT,require('./profile').getProfile)
     routes.post('/updateprofile',authJWT.verifyJWT,require('./updateProfile').updateProfile)
     return routes
