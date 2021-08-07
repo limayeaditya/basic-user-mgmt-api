@@ -12,7 +12,7 @@ const getProfile = (request,response)=>{
     const jwtToken = token.split(' ')[1]
     const decodeUserInfo = jwt.verify(jwtToken,secretKey)
     
-    response.status(200).json({
+    return response.status(200).json({
         success: true,
         profile: userServices.getUserData(decodeUserInfo.name)
     })

@@ -10,7 +10,7 @@ const userService = require('../services/user')
 const verifyJWT = (request,response,next)=>{
     const token = request.headers['authorization']
     if(!token){
-        response.status(403).json({
+        return response.status(403).json({
             status: 'fail',
             message: 'A token is missing'
         })
@@ -20,13 +20,14 @@ const verifyJWT = (request,response,next)=>{
         const decodeUserInfo = jwt.verify(jwtToken,secretKey)
         
         if(!userService.getUserData(decodeUserInfo.name)){
-            response.status(401).json({
+            return response.status(401).json({
                 success: false,
                 message: 'Invalid Credentials'
+
             })
         }
     } catch (error) {
-        response.status(401).json({
+        return response.status(401).json({
             success: false,
             message:"Invalid token"
         })
