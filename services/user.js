@@ -33,7 +33,7 @@ const updateUserData = (emailInToken,name,email,phone)=>{
 
 
 const registerUser = (name,email,phone,password)=>{
-    const id = allUsers.length + 1
+    const id = allUsers.length
     let user = {
         id: id,
         name: name,
