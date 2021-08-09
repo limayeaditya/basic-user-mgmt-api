@@ -1,6 +1,8 @@
 const userServices = require('../../../services/user')
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
+const bcrypt = require ('bcrypt');
+const saltRounds = 10;
 const express = require('express')
 const app = express()
 const secretKey = process.env.secretKey
@@ -14,7 +16,10 @@ const registerUser = () => {
         const email = requestData.email
         const phone = requestData.phone
         const password = requestData.password
-        userServices.registerUser(name,email,phone,password)
+        bcrypt.hash(password, saltRounds, function(err, hash) {
+            userServices.registerUser(name,email,phone,hash)
+          });
+        
 
         const token = jwt.sign({
             name: name,
