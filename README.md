@@ -1,5 +1,5 @@
 # Basic User Management API  
-A sample node js api for registering user, authenticating login and updating the user information with a rest api.     
+A sample node js api for registering user, authenticating login and updating the user information with a REST API using NodeJS.     
 
 ### Clone the repository, install node packages and the dependencies
 
