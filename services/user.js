@@ -19,16 +19,21 @@ const getUserData = (name)=>{
     }
 }
 const updateUserData = (emailInToken,name,email,phone)=>{
+    console.log(allUsers[1]);
+    console.log(emailInToken);  
     for(let i=0;i<allUsers.length;i++){
-        if(allUsers[i].email === emailInToken){
+        console.log(allUsers[i].email,emailInToken);
+        if(allUsers[i].email == emailInToken){
             allUsers[i].name = name
             allUsers[i].email = email
             allUsers[i].phone = phone
+            console.log('heyyyy')
+            return allUsers[i]
         }
+              
         
-        
-        return allUsers[i]
     }
+    
 }
 
 
@@ -42,7 +47,7 @@ const registerUser = (name,email,phone,password)=>{
         password:password
     }
     allUsers.push(user)
-    
+    console.log(allUsers.length);
 }
 
 const loginUser = (email,password)=>{
@@ -52,8 +57,6 @@ const loginUser = (email,password)=>{
                 console.log(allUsers[i]);
                 return allUsers[i]
             }
-        }else{
-            return []
         }
     }
 }
