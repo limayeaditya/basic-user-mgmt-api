@@ -28,15 +28,21 @@ url: http://localhost:5000/api/v1/route_name
 PORT=5000 by default can change in .env file
 ```
 **API Catalog**
+
 ![/register](./screenshots/route_register.jpg)
+
 
 ![/login](./screenshots/route_login.jpg)
 
+
 ![/profile](./screenshots/route_profile.jpg)
+
 
 ![/users](./screenshots/route_users.jpg)
 
+
 ![/updateprofile](./screenshots/route_updateprofile.jpg)
+
 
 ![/changepassword](./screenshots/route_changepassword.jpg)
 
