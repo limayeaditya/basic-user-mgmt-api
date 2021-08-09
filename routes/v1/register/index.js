@@ -11,13 +11,15 @@ app.use(express.json());
 
 const registerUser = () => {
     return (request,response) => {
+        console.log(request.file)
+        const profileImage = (request.file.path)
         const requestData = request.body
         const name = requestData.name
         const email = requestData.email
         const phone = requestData.phone
         const password = requestData.password
         bcrypt.hash(password, saltRounds, function(err, hash) {
-            userServices.registerUser(name,email,phone,hash)
+            userServices.registerUser(profileImage,name,email,phone,hash)
           });
         
 

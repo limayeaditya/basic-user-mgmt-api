@@ -4,6 +4,7 @@ const bcrypt = require ('bcrypt');
 let allUsers = [
     {
         id: 0,
+        profileImage:"",
         name:"Try1",
         email:"try1@example.com",
         phone:"9887897889",
@@ -34,10 +35,11 @@ const updateUserData = (emailInToken,name,email,phone)=>{
 }
 
 
-const registerUser = (name,email,phone,password)=>{
+const registerUser = (profileImage,name,email,phone,password)=>{
     const id = allUsers.length
     let user = {
         id: id,
+        profileImage: profileImage,
         name: name,
         email: email,
         phone: phone,
